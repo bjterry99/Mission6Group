@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Edit Task";
+}
+
+@model Mission6Group.Models.TaskResponse
+
+<h2>Edit a Task</h2>
+
+<div>
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <label asp-for="Task">Task Name</label>
+        <input asp-for="Task" /><br />
+        <label asp-for="DueDate">Due Date</label>
+        <input asp-for="DueDate" /><br />
+        <label asp-for="Completed">Completed Yet?</label>
+        <input asp-for="Completed" /><br />
+        <label asp-for="QuadrantID">Quadrant</label>
+        <select asp-for="QuadrantID" >
+            <option value=""></option>
+            @foreach (Quadrant q in ViewBag.Quadrant)
+            {
+                <option value="@q.QuadrantID">@q.QuadrantName</option>
+            }
+        </select><br />
+        <label asp-for="CategoryID">Category</label>
+        <select asp-for="CategoryID">
+            <option value="">Category</option>
+            @foreach (Category c in ViewBag.Category)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select><br />
+
+        <button type="submit">Submit Changes</button>
+    </form>
+</div>

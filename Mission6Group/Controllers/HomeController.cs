@@ -24,15 +24,11 @@ namespace Mission6Group.Controllers
 
         public IActionResult Index()
         {
-           return View();
-        }
-        //public IActionResult Index()
-        //{
-        //    ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
+            ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
 
-        //    var entries = _blahContext.Tasks.OrderBy(x => x.DueDate).ToList();
-        //    return View(entries);
-        //}
+            var entries = _blahContext.Tasks.OrderBy(x => x.DueDate).ToList();
+            return View(entries);
+        }
 
         [HttpGet]
         public IActionResult TaskEntry()
@@ -62,8 +58,8 @@ namespace Mission6Group.Controllers
         {
             return View();
         }
-        [HttpGet] //This lets us edit the movie entry, and then save the changes with the Post Edit method below
-        public IActionResult Edit(int TaskID) //MovieId has to match the name of the thing we're passing through the route so it knows what to grab
+        [HttpGet] //This lets us edit the task, and then save the changes with the Post Edit method below
+        public IActionResult Edit(int TaskID) 
         {
             ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
             ViewBag.Quadrants = _blahContext.Quadrants.ToList();
@@ -83,7 +79,7 @@ namespace Mission6Group.Controllers
             return RedirectToAction("Index"); //Now going up to the waitlist action, and running through that code
         }
         [HttpGet]
-        public IActionResult Delete(int TaskID) //Pulls up the movie record from above
+        public IActionResult Delete(int TaskID) //Pulls up the task from above
         {
             var entry = _blahContext.Tasks.Single(x => x.TaskID == TaskID);
             return View(entry);

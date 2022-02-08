@@ -24,17 +24,21 @@ namespace Mission6Group.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
-
-           var entries = _blahContext.Tasks.OrderBy(x => x.DueDate).ToList();
-           return View(entries);
+           return View();
         }
+        //public IActionResult Index()
+        //{
+        //    ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
+
+        //    var entries = _blahContext.Tasks.OrderBy(x => x.DueDate).ToList();
+        //    return View(entries);
+        //}
 
         [HttpGet]
         public IActionResult TaskEntry()
         {
             ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
-
+            ViewBag.Quadrants = _blahContext.Quadrants.ToList();
 
             return View();
         }
@@ -53,12 +57,16 @@ namespace Mission6Group.Controllers
             {
                 return View(en);
             }
-
+        }
+        public IActionResult EntryCon(TaskResponse en)
+        {
+            return View();
         }
         [HttpGet] //This lets us edit the movie entry, and then save the changes with the Post Edit method below
         public IActionResult Edit(int TaskID) //MovieId has to match the name of the thing we're passing through the route so it knows what to grab
         {
-            ViewBag.Categories = _blahContext.Categories.ToList();
+            ViewBag.Categories = _blahContext.Categories.ToList(); //ViewBag is automatically passed around, so we don't have to send it to the view
+            ViewBag.Quadrants = _blahContext.Quadrants.ToList();
 
             var entry = _blahContext.Tasks.Single(x => x.TaskID == TaskID);
 

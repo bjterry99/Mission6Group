@@ -22,7 +22,7 @@
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            @if (x.QuadrantID == 1)
+                            @if ((x.QuadrantID == 1) & (x.Completed == false))
                             {
                                 <tr>
                                     <td>@x.Task</td>
@@ -49,7 +49,7 @@
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            @if (x.QuadrantID == 2)
+                            @if ((x.QuadrantID == 2) & (x.Completed == false))
                             {
                                 <tr>
                                     <td>@x.Task</td>
@@ -78,7 +78,7 @@
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            @if (x.QuadrantID == 3)
+                            @if ((x.QuadrantID == 3) & (x.Completed == false))
                             {
                                 <tr>
                                     <td>@x.Task</td>
@@ -105,7 +105,7 @@
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            @if (x.QuadrantID == 4)
+                            @if ((x.QuadrantID == 4) & (x.Completed == false))
                             {
                                 <tr>
                                     <td>@x.Task</td>
